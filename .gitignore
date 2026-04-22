@@ -1,2 +1,5 @@
 .direnv
 node_modules
+.venv/
+__pycache__/
+.coverage
