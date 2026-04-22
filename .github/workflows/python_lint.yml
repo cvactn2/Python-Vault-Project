@@ -1,0 +1,19 @@
+name: Python Lint
+
+on: [pull_request]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install tools
+        run: pip install ruff mypy
+      - name: Run Ruff (Lint & Format)
+        run: ruff check . && ruff format --check .
+      - name: Run Type Check
+        run: mypy .
+
